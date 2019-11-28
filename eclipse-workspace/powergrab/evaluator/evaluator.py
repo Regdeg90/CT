@@ -45,9 +45,9 @@ def run():
 	for day, month, year in date_generator():
 		start = time.perf_counter()
 		check_call([
-			"java", 
-			"-jar", 
-			"../out/artifacts/powergrab.jar", 
+			"java",
+			"-jar",
+			"../out/artifacts/powergrab.jar",
 			"{day:02}".format(day=day),
 			"{month:02}".format(month=month),
 			"%d" % year,
@@ -61,14 +61,14 @@ def run():
 
 		geojson_path = "stateful-{day:02}-{month:02}-{year}.geojson".format(day=day, month=month, year=year)
 		txt_path = "stateful-{day:02}-{month:02}-{year}.txt".format(day=day, month=month, year=year)
-		
+
 		with open(txt_path) as fd:
 			last_line = fd.readlines()[-1]
 			tokens = last_line.strip().split(",")
 			coins = float(tokens[-2])
-		
+
 		coinsum = sum_coins(year, month, day)
-		
+
 		os.unlink(geojson_path)
 		os.unlink(txt_path)
 

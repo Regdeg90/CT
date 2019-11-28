@@ -43,14 +43,17 @@ public class App
     	OutputWriter output = new OutputWriter(dronetype, day, month, year);
     	int count = 0;
     	while (droney.getCharge() > 0 && count < 250) {
+    		System.out.println("move: "+count);
     		dronemove(currentmap,output, droney);
     		count++;
     	}
         
-        output.getTxtprint().close();
         
+    	output.getTxtprint().close();
         //Outputs to geojson
         output.geooutput(currentmap.getDroneflightpath(), currentmap.getFeatures());
+        
+        output.getGeoprint().close();
         System.out.println("done");        
     }
 

@@ -29,30 +29,36 @@ public abstract class Drone {
 	
 	//Updates the map if the drone is in contact with any stations
 	public HashMap<String, Station> updateStats(HashMap<String, Station> s) {
-		
 		HashMap<String,Station> ret = s;
 		//Finds if a station is close enough
-		Station beststation = null;
+		Station closestStaion = null;
 		double closest = Double.POSITIVE_INFINITY;
 		for (String str : s.keySet()) {
 			
 			Station station = s.get(str);
 			
 			double distance = eculidistance(this.pos, station.getPos());
-			if (distance < 0.00025 && distance < closest) {
+			if (str.equals("f67c-7025-31e0-aaba-ecab-6696")) {
+				System.out.println(this.pos.latitude+", "+this.pos.longitude);
+				System.out.println(distance);
+				
+			}
+			if (distance <= 0.00025 && distance < closest) {
 				closest = distance;
-				beststation = station;
+				closestStaion = station;
 			}
 		}
 		//Updates values accordingly if station exists
-		if ((beststation!=null)) {
-			this.charge += beststation.getCharge();
-			this.coins += beststation.getCoin();
+		if ((closestStaion!=null)) {
+				System.out.println("Closest Station: "+closestStaion.getId());
+			
+			this.charge += closestStaion.getCharge();
+			this.coins += closestStaion.getCoin();
 			double x = 0.0;
-			ret.replace(beststation.getId(), new Station(beststation.getId(), x, x, beststation.getPos()));
+			ret.replace(closestStaion.getId(), new Station(closestStaion.getId(), x, x, closestStaion.getPos()));
 
 		}
-		
+		System.out.println();
 		return ret;
 	}
 	
@@ -75,8 +81,8 @@ public abstract class Drone {
 			}
 		}
 		
-		//Checks the closest station is not bad
-		if (closestdistance < 0.00025 && closeststation.getCoin() < 0) {
+		//Checks the closest station is bad
+		if (closestdistance <= 0.00025 && closeststation.getCoin() < 0) {
 			return false;
 		}
 		
@@ -112,6 +118,65 @@ public abstract class Drone {
 	//Basis of next Move to be overwritten
 	public String nextMove(HashMap<String, Station> s) {
 		return null;
+	}
+	
+	//Finds which stations are in range after a directional move
+	public HashMap<Direction,Station> inrange(HashMap<String, Station> s){
+		
+		HashMap<Direction,Station> ret = new HashMap<Direction, Station>();
+		for (Direction d : getDirections()) {
+			
+			Position potential = this.getPos().nextPosition(d);
+			Station closeststation = null;
+			double closestdist = Double.POSITIVE_INFINITY;
+			if (potential.inPlayArea()) {
+				for (String str : s.keySet()) {
+					
+					Station station = s.get(str);
+					
+					//Finds the closest station to the new position
+					double distance = eculidistance(potential, station.getPos());
+					if (distance <= 0.00025 && distance < closestdist) {
+						closestdist = distance;
+						closeststation = station;
+					}
+					
+				}
+				
+			}
+			if (!(closeststation==null)) {
+				ret.put(d, closeststation);
+			}
+			
+		}
+
+		return ret;
+	}
+	
+	//Will return the direction with the highest coins from nearby stations, can be negative
+	public Direction findbestbaddirection(HashMap<String, Station> s, Direction bestdirection,
+			HashMap<Direction, Station> near, List<Direction> dirs) {
+		double bestval = Double.NEGATIVE_INFINITY;
+		for (Direction d : getDirections()) {
+			Position posmove = this.getPos().nextPosition(d);
+			if (!goodmove(posmove, s)) {
+				dirs.remove(d);
+			}
+			if (near.containsKey(d)) {
+				Station posvist = near.get(d);
+
+				if (posvist.getCoin() > bestval) {
+
+					bestval = posvist.getCoin();
+					bestdirection = d;
+				}
+
+			}
+			
+		}
+		
+//		System.out.println(bestval);
+		return bestdirection;
 	}
 	
 	public Position getPos() {return pos;}

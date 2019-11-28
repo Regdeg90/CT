@@ -13,74 +13,31 @@ public class StatelessDrone extends Drone {
 	public String nextMove(HashMap<String, Station> s) {
 		
 		//Finds all directional moves that result in stations
-		HashMap<Direction, Station> near = this.inrange(s);
+		HashMap<Direction, Station> near = inrange(s);
 		List<Direction> possibledirections = new ArrayList<Direction>(getDirections());
 		
-		//Finds the best direction
+		
+		//Finds the best direction from all direction that are nearby
 		Direction bestdirection = null;
-		double bestval = Double.NEGATIVE_INFINITY;
-		for (Direction d : getDirections()) {
-			//Find the largest coins every directional moves
-			if (near.containsKey(d)) {
-				Station posvist = near.get(d);
-				if (posvist.getCoin() > bestval) {
+		bestdirection = findbestbaddirection(s, bestdirection, near, possibledirections);
 
-					bestval = posvist.getCoin();
-					bestdirection = d;
-				}
-
-			}
-			
-			if (!goodmove(this.getPos().nextPosition(d), s)) {
-				possibledirections.remove(d);
-			}
-		}
-		//If there is a station with positive coins or there is no neutral directions
-		//Otherwise finds a random move from neutral directions
-		if (bestval > 0 ||( possibledirections.isEmpty() && bestdirection != null)) {
-			return returnbestmove(bestdirection);
-			
-		} else {
+		//If there is no best direction takes a random moe
+		if(bestdirection == null) {
 			return returnrandommove(possibledirections);
+		} else {
+			
+			//Takes the best move if there is a move with positive coins or if there are no postive directions
+			if (near.get(bestdirection).getCoin() > 0 || possibledirections.isEmpty()) {
+				return returnbestmove(bestdirection);
+			} else {
+				return returnrandommove(possibledirections);
+			}
 		}
+
 		
 	}
 		
-	//Finds which stations are in range after a directional move
-	public HashMap<Direction,Station> inrange(HashMap<String, Station> s){
-		
-		HashMap<Direction,Station> ret = new HashMap<Direction, Station>();
-		
-		for (Direction d : getDirections()) {
-			
-			Position potential = this.getPos().nextPosition(d);
-			Station closeststation = null;
-			double closestdist = Double.POSITIVE_INFINITY;
-			if (potential.inPlayArea()) {
-				for (String str : s.keySet()) {
-					
-					Station station = s.get(str);
-					
-					//Finds the closest station to the new position
-					double distance = eculidistance(potential, station.getPos());
-					if (distance < 0.00025 && distance < closestdist) {
-						closestdist = distance;
-						closeststation = station;
-					}
-					
-				}
-				
-			}
-			if (!(closeststation==null)) {
-				ret.put(d, closeststation);
-			}
-			
-		}
-		
-		
-		
-		return ret;
-	}
+
 	
 
 }

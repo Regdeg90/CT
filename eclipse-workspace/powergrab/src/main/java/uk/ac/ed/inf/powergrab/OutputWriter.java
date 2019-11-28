@@ -32,12 +32,12 @@ public class OutputWriter {
         		+ "\"type\": \"LineString\",\n"
         		+ "\"coordinates\": [ \n");
     	
-        for (int i =0; i < p.size()-2; i++) {
+        for (int i =0; i < p.size()-1; i++) {
         	geoprint.println("["+ p.get(i).longitude + "," + p.get(i).latitude + "],");
         }
         geoprint.println("["+ p.get(p.size()-1).longitude + "," + p.get(p.size()-1).latitude + "]");
         geoprint.println("]}},\n");
-        for (int i =0; i < features.size()-2; i++) {
+        for (int i =0; i < features.size()-1; i++) {
         	geoprint.println(features.get(i).toJson() + ",");
         	
         	

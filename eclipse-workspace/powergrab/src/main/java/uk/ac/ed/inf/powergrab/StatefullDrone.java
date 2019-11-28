@@ -41,17 +41,14 @@ public class StatefullDrone extends Drone{
 		}
 		
 		//Takes a random direction
-		if (repeatedmoves>=10 || beststation == null) {
+		if (repeatedmoves>=10 || beststation == null || bestdirection == null) {
+			System.out.println(bestdirection);
+			HashMap<Direction, Station> near = inrange(s);
 			
 			//Removes all directions that are bad
+			
 			List<Direction> dirs = new ArrayList<Direction>(getDirections());
-			for (Direction d : getDirections()) {
-				Position posmove = this.getPos().nextPosition(d);
-				if (!goodmove(posmove, s)) {
-					dirs.remove(d);
-				}
-				
-			}
+			bestdirection = findbestbaddirection(s, bestdirection, near, dirs);
 			
 			//Sets station to unreachable if it's stuck
 			if (beststation != null && repeatedmoves >= 10) {
@@ -64,7 +61,13 @@ public class StatefullDrone extends Drone{
 				repeatedmoves = 0;
 			}
 			
-			return returnrandommove(dirs);
+			if(dirs.isEmpty()) {
+				previousmoves.add(bestdirection);
+				return returnbestmove(bestdirection);
+			} else {
+				return returnrandommove(dirs);
+			}
+			
 		}
 		
 		else {
@@ -73,6 +76,8 @@ public class StatefullDrone extends Drone{
 		}
 		
 	}
+
+
 
 	//Finds the direction that gets the drone closest to the best station
 	private Direction findbestdirection(HashMap<String, Station> s, Station beststation) {
