@@ -1,0 +1,20 @@
+VOID
+INT_LITERAL(123)
+INT
+GT
+RETURN
+RETURN
+SIZEOF
+STRUCT
+STRUCT
+MINUS
+SC
+LBRA
+RPAR
+NE
+ASTERIX
+CHAR_LITERAL(c)
+PLUS
+Lexing error: unrecognised character (}) at 1:52
+INVALID
+Lexing: failed (1 errors)

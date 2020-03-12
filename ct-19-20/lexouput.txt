@@ -1,0 +1,226 @@
+Buildfile: /afs/inf.ed.ac.uk/user/s17/s1704097/ct-19-20/build.xml
+
+build-subprojects:
+
+init:
+
+build-project:
+     [echo] ct-19-20: /afs/inf.ed.ac.uk/user/s17/s1704097/ct-19-20/build.xml
+
+build:
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+/afs/inf.ed.ac.uk/user/s17/s1704097/ct-19-20
+boi.c
+chars.c
+comments.c
+fibonacci.c
+logic.c
+programwithspaces.c
+smallparse.c
+string.c
+struct.c
+testlexer0.c
+Files output and tests/testlexer0correct.txt are identical
+testlexer10.c
+Files output and tests/testlexer10correct.txt are identical
+testlexer11.c
+Files output and tests/testlexer11correct.txt are identical
+testlexer12.c
+Files output and tests/testlexer12correct.txt are identical
+testlexer13.c
+Files output and tests/testlexer13correct.txt are identical
+testlexer14.c
+Files output and tests/testlexer14correct.txt are identical
+testlexer15.c
+Files output and tests/testlexer15correct.txt are identical
+testlexer16.c
+Files output and tests/testlexer16correct.txt are identical
+testlexer17.c
+Files output and tests/testlexer17correct.txt are identical
+testlexer18.c
+Files output and tests/testlexer18correct.txt are identical
+testlexer19.c
+Files output and tests/testlexer19correct.txt are identical
+testlexer1.c
+Files output and tests/testlexer1correct.txt are identical
+testlexer20.c
+Files output and tests/testlexer20correct.txt are identical
+testlexer21.c
+Files output and tests/testlexer21correct.txt are identical
+testlexer22.c
+Files output and tests/testlexer22correct.txt are identical
+testlexer23.c
+Files output and tests/testlexer23correct.txt are identical
+testlexer24.c
+Files output and tests/testlexer24correct.txt are identical
+testlexer25.c
+Files output and tests/testlexer25correct.txt are identical
+testlexer26.c
+Files output and tests/testlexer26correct.txt are identical
+testlexer27.c
+Files output and tests/testlexer27correct.txt are identical
+testlexer28.c
+Files output and tests/testlexer28correct.txt are identical
+testlexer29.c
+Files output and tests/testlexer29correct.txt are identical
+testlexer2.c
+Files output and tests/testlexer2correct.txt are identical
+testlexer30.c
+Files output and tests/testlexer30correct.txt are identical
+testlexer31.c
+Files output and tests/testlexer31correct.txt are identical
+testlexer32.c
+Files output and tests/testlexer32correct.txt are identical
+testlexer33.c
+Files output and tests/testlexer33correct.txt are identical
+testlexer34.c
+Files output and tests/testlexer34correct.txt are identical
+testlexer35.c
+Files output and tests/testlexer35correct.txt are identical
+testlexer36.c
+Files output and tests/testlexer36correct.txt are identical
+testlexer37.c
+Files output and tests/testlexer37correct.txt are identical
+testlexer38.c
+Files output and tests/testlexer38correct.txt are identical
+testlexer39.c
+Files output and tests/testlexer39correct.txt are identical
+testlexer3.c
+Files output and tests/testlexer3correct.txt are identical
+testlexer40.c
+Files output and tests/testlexer40correct.txt are identical
+testlexer41.c
+Files output and tests/testlexer41correct.txt are identical
+testlexer42.c
+Files output and tests/testlexer42correct.txt are identical
+testlexer43.c
+Files output and tests/testlexer43correct.txt are identical
+testlexer44.c
+Files output and tests/testlexer44correct.txt are identical
+testlexer45.c
+Files output and tests/testlexer45correct.txt are identical
+testlexer46.c
+Files output and tests/testlexer46correct.txt are identical
+testlexer47.c
+Files output and tests/testlexer47correct.txt are identical
+testlexer48.c
+Files output and tests/testlexer48correct.txt are identical
+testlexer49.c
+Files output and tests/testlexer49correct.txt are identical
+testlexer4.c
+Files output and tests/testlexer4correct.txt are identical
+testlexer50.c
+Files output and tests/testlexer50correct.txt are identical
+testlexer51.c
+Files output and tests/testlexer51correct.txt are identical
+testlexer52.c
+Files output and tests/testlexer52correct.txt are identical
+testlexer53.c
+Files output and tests/testlexer53correct.txt are identical
+testlexer54.c
+Files output and tests/testlexer54correct.txt are identical
+testlexer55.c
+Files output and tests/testlexer55correct.txt are identical
+testlexer56.c
+Files output and tests/testlexer56correct.txt are identical
+testlexer57.c
+Files output and tests/testlexer57correct.txt are identical
+testlexer58.c
+Files output and tests/testlexer58correct.txt are identical
+testlexer59.c
+Files output and tests/testlexer59correct.txt are identical
+testlexer5.c
+Files output and tests/testlexer5correct.txt are identical
+testlexer60.c
+Files output and tests/testlexer60correct.txt are identical
+testlexer61.c
+Files output and tests/testlexer61correct.txt are identical
+testlexer62.c
+Files output and tests/testlexer62correct.txt are identical
+testlexer63.c
+Files output and tests/testlexer63correct.txt are identical
+testlexer64.c
+Files output and tests/testlexer64correct.txt are identical
+testlexer65.c
+Files output and tests/testlexer65correct.txt are identical
+testlexer66.c
+Files output and tests/testlexer66correct.txt are identical
+testlexer67.c
+Files output and tests/testlexer67correct.txt are identical
+testlexer68.c
+Files output and tests/testlexer68correct.txt are identical
+testlexer69.c
+Files output and tests/testlexer69correct.txt are identical
+testlexer6.c
+Files output and tests/testlexer6correct.txt are identical
+testlexer70.c
+Files output and tests/testlexer70correct.txt are identical
+testlexer71.c
+Files output and tests/testlexer71correct.txt are identical
+testlexer72.c
+Files output and tests/testlexer72correct.txt are identical
+testlexer73.c
+Files output and tests/testlexer73correct.txt are identical
+testlexer74.c
+Files output and tests/testlexer74correct.txt are identical
+testlexer75.c
+Files output and tests/testlexer75correct.txt are identical
+testlexer76.c
+Files output and tests/testlexer76correct.txt are identical
+testlexer77.c
+Files output and tests/testlexer77correct.txt are identical
+testlexer78.c
+Files output and tests/testlexer78correct.txt are identical
+testlexer79.c
+Files output and tests/testlexer79correct.txt are identical
+testlexer7.c
+Files output and tests/testlexer7correct.txt are identical
+testlexer80.c
+Files output and tests/testlexer80correct.txt are identical
+testlexer81.c
+Files output and tests/testlexer81correct.txt are identical
+testlexer82.c
+Files output and tests/testlexer82correct.txt are identical
+testlexer83.c
+Files output and tests/testlexer83correct.txt are identical
+testlexer84.c
+Files output and tests/testlexer84correct.txt are identical
+testlexer85.c
+Files output and tests/testlexer85correct.txt are identical
+testlexer86.c
+Files output and tests/testlexer86correct.txt are identical
+testlexer87.c
+Files output and tests/testlexer87correct.txt are identical
+testlexer88.c
+Files output and tests/testlexer88correct.txt are identical
+testlexer89.c
+Files output and tests/testlexer89correct.txt are identical
+testlexer8.c
+Files output and tests/testlexer8correct.txt are identical
+testlexer90.c
+Files output and tests/testlexer90correct.txt are identical
+testlexer91.c
+Files output and tests/testlexer91correct.txt are identical
+testlexer92.c
+Files output and tests/testlexer92correct.txt are identical
+testlexer93.c
+Files output and tests/testlexer93correct.txt are identical
+testlexer94.c
+Files output and tests/testlexer94correct.txt are identical
+testlexer95.c
+Files output and tests/testlexer95correct.txt are identical
+testlexer96.c
+Files output and tests/testlexer96correct.txt are identical
+testlexer97.c
+Files output and tests/testlexer97correct.txt are identical
+testlexer98.c
+Files output and tests/testlexer98correct.txt are identical
+testlexer99.c
+Files output and tests/testlexer99correct.txt are identical
+testlexer9.c
+Files output and tests/testlexer9correct.txt are identical
+tictactoe.c
+tictactoewithspaces.c
+while.c

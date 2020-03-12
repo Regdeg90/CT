@@ -1,0 +1,108 @@
+ 		.data
+string0: 		.asciiz  "First " 
+ .align 2
+string1: 		.asciiz  " terms of Fibonacci series are : " 
+ .align 2
+string2: 		.asciiz  " " 
+ .align 2
+ 		.text
+addi $sp $sp -4
+j main
+main:
+addi $sp $sp -4
+addi $sp $sp -4
+addi $sp $sp -4
+addi $sp $sp -4
+addi $sp $sp -4
+addi $sp $sp -4
+la $s7, 8 ($sp)
+li $v0, 5
+syscall
+move, $s6, $v0
+move $t8, $s6
+sw $t8, 0($s7)
+la $t8, 12 ($sp)
+li $t9,0
+move $s7, $t9
+sw $s7, 0($t8)
+la $s7, 16 ($sp)
+li $s6,1
+move $t8, $s6
+sw $t8, 0($s7)
+la $s6, string0
+li $v0, 4
+move $a0, $s6
+syscall
+la $s6, 8 ($sp)
+lw $s6, ($s6)
+li $v0, 1
+add $a0, $s6, $zero
+syscall
+la $s6, string1
+li $v0, 4
+move $a0, $s6
+syscall
+la $t8, 24 ($sp)
+li $t9,0
+move $s7, $t9
+sw $s7, 0($t8)
+while0:
+la $t8, 24 ($sp)
+lw $t8, ($t8)
+la $s7, 8 ($sp)
+lw $s7, ($s7)
+slt $t9, $t8, $s7
+beq $t9, $zero, whileend0
+la $t8, 24 ($sp)
+lw $t8, ($t8)
+li $s6,1
+addi $s6, $s6, 1
+slt $s7, $t8, $s6
+beq $s7, $zero, ifend1else
+la $s5, 20 ($sp)
+la $s4, 24 ($sp)
+lw $s4, ($s4)
+move $t8, $s4
+sw $t8, 0($s5)
+j ifend1
+ifend1else:
+la $t8, 20 ($sp)
+la $s3, 12 ($sp)
+lw $s3, ($s3)
+la $s2, 16 ($sp)
+lw $s2, ($s2)
+add $s6, $s3, $s2
+move $s5, $s6
+sw $s5, 0($t8)
+la $s5, 12 ($sp)
+la $s4, 16 ($sp)
+lw $s4, ($s4)
+move $t8, $s4
+sw $t8, 0($s5)
+la $t8, 16 ($sp)
+la $s6, 20 ($sp)
+lw $s6, ($s6)
+move $s5, $s6
+sw $s5, 0($t8)
+ifend1:
+la $s7, 20 ($sp)
+lw $s7, ($s7)
+li $v0, 1
+add $a0, $s7, $zero
+syscall
+la $s7, string2
+li $v0, 4
+move $a0, $s7
+syscall
+la $t8, 24 ($sp)
+la $s4, 24 ($sp)
+lw $s4, ($s4)
+li $s2,1
+add $s5, $s4, $s2
+move $s6, $s5
+sw $s6, 0($t8)
+j while0
+whileend0:
+li $v0, 10
+add $a0, $t9, $zero
+syscall

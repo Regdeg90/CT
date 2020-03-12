@@ -1,0 +1,30 @@
+4321
+ Move disk 1 from rod A to rod C
+ this is hurting me
+ Move disk 1 from rod A to rod B
+ 1
+ Move disk 1 from rod C to rod B
+ this is hurting me
+ Move disk 1 from rod A to rod C
+ 21
+ Move disk 1 from rod B to rod A
+ this is hurting me
+ Move disk 1 from rod B to rod C
+ 1
+ Move disk 1 from rod A to rod C
+ this is hurting me
+ Move disk 1 from rod A to rod B
+ 321
+ Move disk 1 from rod C to rod B
+ this is hurting me
+ Move disk 1 from rod C to rod A
+ 1
+ Move disk 1 from rod B to rod A
+ this is hurting me
+ Move disk 1 from rod C to rod B
+ 21
+ Move disk 1 from rod A to rod C
+ this is hurting me
+ Move disk 1 from rod A to rod B
+ 1
+ Move disk 1 from rod C to rod B

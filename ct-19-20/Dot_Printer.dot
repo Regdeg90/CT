@@ -1,0 +1,29 @@
+digraph ast{
+Program [ label = "Program "];
+StructDecls [ label = "StructDecls "];
+Program -> StructDecls;
+s2[ label = " Struct(s)"];
+x3[ label = "Variable(x)"];
+INT4[ label = " INT"];
+x4->INT4
+s2->x4
+y5[ label = "Variable(y)"];
+CHAR6[ label = " CHAR"];
+y6->CHAR6
+s2->y6
+StructDecls -> s2;
+e8[ label = " Struct(e)"];
+x9[ label = "Variable(x)"];
+INT10[ label = " INT"];
+x10->INT10
+e8->x10
+y11[ label = "Variable(y)"];
+CHAR12[ label = " CHAR"];
+y12->CHAR12
+e8->y12
+e13[ label = "Variable(e)"];
+s14[ label = " Struct(s)"];
+e14->s14
+e8->e14
+StructDecls -> e8;
+}

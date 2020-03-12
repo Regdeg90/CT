@@ -1,0 +1,5 @@
+diagraph ast {
+Program[ label = "Program "];
+StructDecls[ label = "StructDecls "];
+Program -> StructDecls;
+}

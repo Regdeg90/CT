@@ -1,0 +1,157 @@
+# #  comment
+# () grouping
+# [] optional
+# *  zero or more
+# +  one or more
+# |  alternative
+
+
+program    ::= (include)* (structdecl)* (vardecl)* (fundecl)* EOF
+
+include    ::= "#include" STRING_LITERAL
+
+structdecl ::= structtype "{" (vardecl)+ "}" ";"    # structure declaration
+
+vardecl    ::= type IDENT ";"                       # normal declaration, e.g. int a;
+             | type IDENT "[" INT_LITERAL "]" ";"   # array declaration, e.g. int a[2];
+
+fundecl    ::= type IDENT "(" params ")" block    # function declaration
+
+type       ::= ("int" | "char" | "void" | structtype) ["*"]
+structtype ::= "struct" IDENT
+
+params     ::= [ type IDENT ("," type IDENT)* ]
+
+stmt       ::= block
+             | "while" "(" exp ")" stmt              # while loop
+             | "if" "(" exp ")" stmt ["else" stmt]   # if then else
+             | "return" [exp] ";"                    # return
+             | exp "=" exp ";"                      # assignment
+             | exp ";"                               # expression statement, e.g. a function call
+
+block      ::= "{" (vardecl)* (stmt)* "}"
+
+exp        ::= "(" exp ")"
+             | (IDENT | INT_LITERAL)
+             | "-" exp
+             | CHAR_LITERAL
+             | STRING_LITERAL
+             | exp (">" | "<" | ">=" | "<=" | "!=" | "==" | "+" | "-" | "/" | "*" | "%" | "||" | "&&") exp  # binary operators
+             | arrayaccess | fieldaccess | valueat | funcall | sizeof | typecast
+
+funcall      ::= IDENT "(" [ exp ("," exp)* ] ")"
+arrayaccess  ::= exp "[" exp "]"                  # array access
+fieldaccess  ::= exp "." IDENT                    # structure field member access
+valueat      ::= "*" exp                          # Value at operator (pointer indirection)
+sizeof       ::= "sizeof" "(" type ")"            # size of type
+typecast     ::= "(" type ")" exp                 # type casting
+
+#Own ecp version
+
+exp ::= "(" exp ")"| (IDENT | INT_LITERAL)| "-" exp | CHAR_LITERAL | STRING_LITERAL | funcall | typecast | sizeof | valuat
+		| exp [ exp ] | exp . IDENT | exp op exp
+		
+		
+mine
+exp -> "terminal" EXP2
+
+
+EXP2 -> [exp] EXP2 | . ident EXP2 | operate EXP2 
+
+
+--------------------------------------------------------------------------
+
+# #  comment
+# () grouping
+# [] optional
+# *  zero or more
+# +  one or more
+# |  alternative
+
+
+program    ::= (include)* (structdecl)* (vardecl)* (fundecl)* EOF
+
+include    ::= "#include" STRING_LITERAL
+
+structdecl ::= structtype "{" varDeclPLus "}" ";"    # structure declaration
+
+varDeclPlus ::= vardecl varDeclPlus | vardecl
+
+vardecl    ::= type IDENT vardeclarray ";"
+
+vardeclarray ::= empty | "[" INT_LITERAL "]"
+
+type       ::= ("int" | "char" | "void" | structtype) ["*"]
+
+fundecl    ::= type IDENT "(" params ")" block    # function declaration
+
+
+structtype ::= "struct" IDENT
+
+params     ::= [ type IDENT multiparams ]
+
+multiparams ::= ("," type IDENT) multiparams | epsilion
+
+block      ::= "{" (vardecl)* stmtstar "}"
+
+stmtstar ::= stmt stmtstar | empty
+
+stmt       ::= block
+             | "while" "(" exp ")" stmt              # while loop
+             | "if" "(" exp ")" stmt elsestmt  # if then else
+             | "return" [exp] ";"                    # return
+             | exp expstmt ";"                      # assignment
+                              # expression statement, e.g. a function call
+expstmt  ::= "=" exp | empty
+
+elsestmt ::= "else" stmt | empty
+
+	 
+			 
+funcall      ::= IDENT "(" [ exp ("," exp)* ] ")"
+arrayaccess  ::= exp "[" exp "]"                  # array access
+fieldaccess  ::= exp "." IDENT                    # structure field member access
+valueat      ::= "*" exp                          # Value at operator (pointer indirection)
+sizeof       ::= "sizeof" "(" type ")"            # size of type
+typecast     ::= "(" type ")" exp                 # type casting
+
+
+
+exp -> exp2 starexp
+
+starexp -> ("||" exp2 starexp) | empty
+
+exp2 -> exp3 starexp2
+
+starexp2 -> ("&&" exp3 starexp2) | empty
+
+exp3 -> exp4 starexp3
+
+starexp3 -> ((==|!=) exp4 starexp3) | empty
+
+exp4 -> exp5 starexp4
+
+starexp4 -> ((<|<=|>|>=) exp5 starexp4) | empty
+
+exp5 -> exp6 starexp5
+
+starexp5 -> ((+|-)) exp6 starexp5) | empty
+
+exp6 -> exp7 starexp6
+
+starexp6 -> ((*|/|%) exp7 starexp6) | empty
+
+exp7 -> exp8 starexp7
+
+exp7 -> sizeof | valueat | typcast | exp8
+
+# starexp7 -> ((sizeof | valueat| typecast ) exp8 starexp7) | empty
+
+exp8 -> term exp9
+
+term -> IDENT | INT_LITERAL | CHAR_LITERAL | STRING_LITERAL | "(" exp ")" | "-" exp | funcall
+
+exp9 -> . IDENT exp8| "[" exp "]" exp8 | empty
+
+
+		
